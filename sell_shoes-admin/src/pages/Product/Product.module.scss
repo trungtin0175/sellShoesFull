@@ -1,0 +1,24 @@
+.wrapper {
+  margin-left: 50px;
+}
+.heading {
+  display: flex;
+  justify-content: space-between;
+}
+.heading-name {
+  font-size: 2.6rem;
+  color: var(--text-color);
+}
+.heading-link {
+  font-size: 1.8rem;
+  padding: 8px;
+  background-color: var(--primary);
+  color: var(--white);
+  border-radius: 6px;
+}
+.heading-icon {
+  margin-right: 10px;
+}
+.body {
+  margin-top: 30px;
+}

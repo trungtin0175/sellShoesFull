@@ -1,0 +1,95 @@
+.wrapper {
+    margin-left: 50px;
+}
+.heading {
+    text-align: center;
+    font-size: 2.8rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+.form {
+    min-height: 100px;
+    padding: 32px 24px;
+    text-align: center;
+    background: #fff;
+    border-radius: 2px;
+    margin: 24px;
+    align-self: center;
+    box-shadow: 0 2px 5px 0 rgba(51, 62, 73, 0.1);
+}
+.form-group {
+    display: flex;
+    margin-bottom: 16px;
+    flex-direction: column;
+}
+.prices,
+.prices-change {
+    display: flex;
+    justify-content: space-between;
+}
+.prices .form-control {
+    width: 500px;
+}
+.prices-change .form-control {
+    width: 350px;
+}
+.form-label,
+.form-message {
+    text-align: left;
+}
+
+.form-label {
+    font-weight: 700;
+    padding-bottom: 6px;
+    line-height: 1.8rem;
+    font-size: 1.4rem;
+    font-family: ProximaNova;
+}
+
+.form-control {
+    height: 40px;
+    padding: 8px 12px;
+    border: 1px solid #b3b3b3;
+    border-radius: 3px;
+    outline: none;
+    font-size: 1.4rem;
+    font-family: ProximaNova;
+    color: #000;
+
+    &:hover {
+        border-color: var(--primary);
+    }
+}
+
+.form-group.invalid .form-control {
+    border-color: #f33a58;
+}
+
+.form-group.invalid .form-message {
+    color: #f33a58;
+}
+
+.form-message {
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    padding: 4px 0 0;
+    color: #f33a58;
+}
+.form-submit {
+    outline: none;
+    max-width: 200px;
+    background-color: var(--primary);
+    margin: 12px 0;
+    padding: 12px 16px;
+    font-weight: 600;
+    color: #fff;
+    border: none;
+    width: 100%;
+    font-size: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #ef2950;
+    }
+}

@@ -1,0 +1,29 @@
+.wrapper {
+  margin-left: 50px;
+}
+.order,
+.chart {
+  margin-top: 40px;
+}
+.mixed {
+  display: flex;
+}
+.mixed-chart {
+  margin-right: 10px;
+}
+.mixed-name {
+  margin-bottom: 20px;
+}
+.filter-btn {
+  margin-left: 20px;
+  width: 50px;
+  height: 30px;
+  background-color: var(--primary);
+  color: var(--white);
+  border-radius: 6px;
+
+  &:hover {
+    cursor: pointer;
+    background-color: var(--primary-hover);
+  }
+}

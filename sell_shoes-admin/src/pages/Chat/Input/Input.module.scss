@@ -1,0 +1,41 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.input {
+  // width: 600px;
+  flex: 1;
+  flex-grow: 1; /* Cho phép `.selected-file-name` co lại khi không đủ không gian */
+
+  // width: 500px;
+  height: 40px;
+  border: 1px solid #333;
+  padding-left: 6px;
+}
+.send-btn {
+  margin-left: 6px;
+  padding: 12px;
+  border-radius: 4px;
+  background-color: var(--primary);
+  color: var(--white);
+
+  &:hover {
+    background-color: (--primary-hover);
+    cursor: pointer;
+  }
+}
+.icon-with-input {
+  padding-left: 6px;
+  font-size: 2rem;
+  cursor: pointer;
+}
+.selected-file-name {
+  flex-shrink: 1;
+
+  font-size: 1rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

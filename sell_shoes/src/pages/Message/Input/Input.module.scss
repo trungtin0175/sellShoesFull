@@ -1,0 +1,51 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // background-color: #242526;
+    background-color: var(--white);
+
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+.input {
+    width: 336px;
+    height: 40px;
+    // border: 1px solid #333;
+    padding: 10px 0 10px 6px;
+    // background-color: #3a3b3c;
+    background-color: #f0f2f5;
+    // color: var(--white);
+    color: #65676b;
+    border-radius: 15px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+.send-btn {
+    margin-left: 6px;
+    padding: 12px;
+    border-radius: 6px;
+    background-color: var(--primary);
+    color: var(--white);
+
+    &:hover {
+        background-color: (--primary-hover);
+        cursor: pointer;
+    }
+}
+.icon-with-input {
+    padding-left: 6px;
+    cursor: pointer;
+}
+.selected-file-name {
+    font-size: 1rem;
+}
+
+// .icon-with-input {
+//     display: flex;
+//     align-items: center;
+// }
+
+// .file-input {
+//     margin-left: 5px; // Điều chỉnh khoảng cách giữa biểu tượng và input theo ý muốn
+// }

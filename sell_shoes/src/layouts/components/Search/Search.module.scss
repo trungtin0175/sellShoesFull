@@ -1,0 +1,117 @@
+.search,
+.search-result {
+    width: 420px;
+}
+.search-result-wrapper {
+    max-height: 500px;
+    overflow-y: auto;
+}
+.search {
+    position: relative;
+    height: var(--search-height);
+    background-color: rgba(22, 24, 35, 0.06);
+    border-radius: var(--search-border-radius);
+    padding-left: 16px;
+    display: flex;
+    border: 1.5px solid transparent;
+
+    input {
+        flex: 1;
+        color: var(--black);
+        padding-right: 40px;
+        font-size: 1.6rem;
+        background-color: transparent;
+        height: 100%;
+        caret-color: var(--primary);
+        font-family: var(--font-family);
+    }
+
+    input:not(:placeholder-shown) ~ .search-btn {
+        color: rgba(22, 24, 35, 0.75);
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: var(--search-top-spacer);
+        right: var(--search-button-width);
+        width: 1px;
+        height: calc(var(--search-height) - var(--search-top-spacer) * 2);
+        background-color: rgba(22, 24, 35, 0.12);
+    }
+
+    &:focus-within {
+        border-color: rgba(22, 24, 35, 0.2);
+    }
+}
+.clear {
+    position: absolute;
+    right: calc(var(--search-button-width) + 16px);
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(22, 24, 35, 0.34);
+}
+.search-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: var(--search-button-width);
+    border-top-right-radius: var(--search-border-radius);
+    border-bottom-right-radius: var(--search-border-radius);
+    font-size: 1.8rem;
+    color: rgba(22, 24, 35, 0.34);
+
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(22, 24, 35, 0.03);
+    }
+
+    &:active {
+        background-color: rgba(22, 24, 35, 0.06);
+    }
+}
+.search-title {
+    padding-left: 0.8rem;
+    margin-bottom: 1rem;
+}
+.search-link {
+    padding: 0.8rem;
+    display: flex;
+    align-items: center;
+    // justify-content: space-between;
+
+    &:hover {
+        background-color: rgba(22, 24, 35, 0.03);
+    }
+}
+.search-result-img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 3px;
+}
+.search-result-info {
+    flex: 1;
+    margin-left: 12px;
+}
+.search-result-name {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+.result-price {
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+.search-result-price {
+    color: var(--primary);
+    font-size: 1.2rem;
+}
+.price-old {
+    color: #ccc;
+    position: relative;
+    text-decoration-line: line-through;
+    margin-left: 10px;
+}

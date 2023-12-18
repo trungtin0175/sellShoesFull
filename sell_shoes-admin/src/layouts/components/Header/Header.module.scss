@@ -1,0 +1,73 @@
+.wrapper {
+  --search-border-radius: 92px;
+  --search-height: 40px;
+  --search-top-spacer: 9px;
+  --search-button-width: 52px;
+
+  width: 100%;
+  height: var(--default-layout-header-height);
+  box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
+  display: flex;
+  justify-content: center;
+  background-color: var(--white);
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
+.inner {
+  height: 100%;
+  width: var(--default-layout-width);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  display: flex;
+  align-items: center;
+}
+.logo-link {
+  display: flex;
+}
+.logo-img {
+  border-radius: 8px;
+  flex-shrink: 0;
+  height: 38px;
+  object-fit: contain;
+  width: 38px;
+}
+.logo-title {
+  color: #000;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-left: 16px;
+}
+// actions
+.actions {
+  display: flex;
+  justify-content: center;
+}
+.cart,
+.user {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  max-width: 200px;
+  padding: 8px 16px;
+  -webkit-box-align: center;
+  // color: rgb(128, 128, 137);
+  color: var(--black);
+  font-weight: 400;
+
+  &:hover {
+    color: var(--primary);
+  }
+}
+.action-icon {
+  font-size: 1.8rem;
+  padding-right: 4px;
+}
+.action-name {
+  font-size: 1.6rem;
+  line-height: 1.5rem;
+}

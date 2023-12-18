@@ -1,0 +1,30 @@
+.menu-item {
+  display: flex;
+  align-items: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  padding: 10px 45px;
+  border-radius: 4px;
+  transition: background-color ease-in 200ms;
+  width: 100%;
+
+  &.active {
+    color: var(--primary);
+    cursor: pointer;
+  }
+
+  &:hover {
+    background-color: rgba(22, 24, 35, 0.03);
+    // background-color: #f1f5f9;
+  }
+  &:first-child {
+    margin-top: 40px;
+  }
+}
+.title {
+  // margin-left: 10px;
+}
+.icon {
+  width: 30px;
+}

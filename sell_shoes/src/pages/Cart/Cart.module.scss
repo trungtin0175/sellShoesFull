@@ -1,0 +1,217 @@
+.wrapper {
+    background-color: var(--white);
+    padding: 10px;
+    border-radius: 5px;
+}
+.header {
+    display: flex;
+}
+.product {
+    width: 46.27949%;
+    color: var(--text-color);
+    padding-bottom: 20px;
+}
+.type {
+    display: flex;
+    flex: 1;
+    justify-content: space-around;
+}
+.type-item {
+    font-size: 1.4rem;
+    color: #aaa;
+    font-weight: 400;
+    padding-left: 30px;
+}
+.body {
+}
+.product-item {
+    display: flex;
+    border-top: 1px solid var(--primary);
+    padding: 20px 0;
+    align-items: center;
+    justify-content: space-between;
+}
+.body-left,
+.body-right,
+.body-product {
+    display: flex;
+    align-items: center;
+    // justify-content: center;
+}
+.body-left {
+    width: 46.27949%;
+    padding-right: 14px;
+    display: flex;
+    justify-content: space-between;
+}
+.body-check {
+    // margin-right: 10px;
+}
+.body-check_btn {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+.body-products {
+    width: 100%;
+}
+.body-product {
+    // width: 318px;
+}
+.body-product_img {
+    width: 80px;
+    height: 80px;
+    margin: 0 10px;
+}
+.body-product_name {
+    font-size: 1.4rem;
+    color: var(--text-color);
+    font-size: 400;
+}
+.body-right {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+}
+.body-size {
+    display: flex;
+    position: relative;
+}
+.body-size_wrapper {
+}
+.body-size_icon {
+    font-size: 1rem;
+    cursor: pointer;
+    padding-left: 4px;
+}
+.body-size_change {
+    position: absolute;
+    right: 0;
+    z-index: 5;
+    display: none;
+
+    &.active {
+        display: block;
+    }
+}
+.body-price {
+    font-size: 1.4rem;
+    margin-left: 16px;
+}
+.body-action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // width: 15.4265%;
+}
+.quantity-btn {
+    width: 25px;
+    height: 25px;
+    font-size: 1.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--primary);
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    &:hover {
+        cursor: pointer;
+        background-color: var(--primary-new);
+    }
+}
+.quantity-number {
+    margin: 0 8px;
+}
+.body-price-new {
+    color: var(--primary);
+}
+.body-delete {
+    font-size: 1.4 rem;
+    cursor: pointer;
+    margin-right: 4px;
+    color: rgb(255, 165, 0);
+}
+.footer {
+    display: flex;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-left: auto;
+    align-items: center;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    bottom: 0;
+    z-index: 2;
+    background-color: var(--white);
+}
+.footer-product {
+    font-size: 1.5rem;
+    color: var(--text-color);
+}
+.footer-price {
+    font-size: 1.6rem;
+    color: var(--primary);
+    padding: 0 10px;
+}
+.footer-buy {
+    width: 120px;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 1.6rem;
+    color: var(--white);
+    background-color: var(--primary);
+    border-radius: 6px;
+
+    &:hover {
+        cursor: pointer;
+        background-color: (--primary-hover);
+    }
+}
+.wrapper-no {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.cart-img {
+    width: 300px;
+    height: auto;
+}
+.cart-heading {
+    font-size: 30px;
+    color: var(--text-color);
+    margin: 20px 0;
+}
+.cart-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 40px;
+    color: var(--white);
+    background-color: var(--primary);
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.buy-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 100px;
+    height: 35px;
+    background-color: var(--primary);
+    border-radius: 3px;
+    color: var(--white);
+    margin-right: 14px;
+
+    &:hover {
+        cursor: pointer;
+        background-color: var(--primary-hover);
+    }
+}

@@ -1,0 +1,116 @@
+.wrapper {
+    width: 192px;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 16px;
+    border-radius: 6px;
+    margin-right: 20px;
+}
+.sort {
+    overflow: hidden;
+    transition: transform 0.3s linear;
+    // display: flex;
+    // flex-wrap: nowrap;
+    // align-items: flex-start;
+    // flex-grow: 1;
+}
+.sort-heading,
+.price-heading {
+    text-align: center;
+    background-color: var(--primary);
+    color: var(--white);
+    padding: 6px 0;
+    font-size: 1.6rem;
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+    &:hover {
+        cursor: pointer;
+        background-color: var(--primary-hover);
+    }
+}
+.sort-heading {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    &:hover {
+        transition: background-color 0.3s;
+    }
+}
+
+.sort-title {
+    // transform: translateY(0);
+    // position: relative;
+    transition: transform 0.3s linear;
+    &.active {
+        transform: translateY(-100%);
+    }
+}
+// .icon-sort {
+//     transition: transform 0.3s linear;
+//     &.active {
+//         transform: rotate(-90deg);
+//     }
+// }
+.icon-sort,
+.icon-price {
+    position: absolute;
+    right: 10px;
+    top: 6px;
+    z-index: 100;
+    color: var(--white);
+    transition: transform 0.3s linear;
+    &.active {
+        transform: rotate(-90deg);
+    }
+    // transform: rotate(10%);
+}
+.sort-title,
+.price-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--white);
+}
+.sort-item,
+.price-item {
+    padding: 4px 0;
+    margin: 6px 0;
+    border: 1px solid #ccc;
+    min-width: 150px;
+    text-align: center;
+    font-size: 1.4rem;
+
+    &:first-child {
+        margin-top: 14px;
+    }
+    &:last-child {
+        margin-bottom: 10px;
+    }
+
+    &:hover {
+        cursor: pointer;
+        background-color: var(--primary-new);
+    }
+    &.active {
+        color: var(--primary);
+    }
+}
+.price {
+    // flex-grow: 1;
+    transition: all 0.3s linear;
+    overflow: hidden;
+}
+.price-heading {
+}
+.price-title {
+    transition: transform 0.3s ease-in;
+    // position: relative;
+    &.active {
+        transform: translateY(-100%);
+    }
+}
+.price-item {
+}
