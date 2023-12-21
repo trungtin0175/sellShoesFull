@@ -178,6 +178,7 @@ function NewProduct() {
           },
         }
       );
+      setQuantityOfSize([]);
       toast.success("Thêm sản phẩm thành công!", {
         autoClose: 1000,
       });

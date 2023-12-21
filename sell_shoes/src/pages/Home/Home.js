@@ -163,9 +163,9 @@ function Home() {
             {Array.isArray(productSale) && productSale.length > 0 && (
                 <div className={cx('wrapper-sale')}>
                     <div className={cx('wrapper-title')}>
-                        {/* <h1 className={cx('title')}>Các sản phẩm đang giảm giá</h1> */}
+                        <h1 className={cx('title')}>Các sản phẩm đang giảm giá</h1>
                     </div>
-                    <img className={cx('wrapper-title-img')} alt="sale" src={images.flashsale}></img>
+                    {/* <img className={cx('wrapper-title-img')} alt="sale" src={images.flashsale}></img> */}
                     <div className={cx('container', 'row', 'sm-gutter')}>
                         {productSale.map((product, index) => (
                             <div className={cx('col', 'l-2-4', 'c-6')} key={index}>

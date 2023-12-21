@@ -8,11 +8,16 @@
   // width: 600px;
   flex: 1;
   flex-grow: 1; /* Cho phép `.selected-file-name` co lại khi không đủ không gian */
-
+  resize: none; // Cho phép thay đổi chiều cao dọc
+  min-height: 40px;
+  height: auto;
+  overflow-wrap: break-word; // Sử dụng overflow-wrap thay vì word-wrap
+  white-space: pre-line;
   // width: 500px;
   height: 40px;
   border: 1px solid #333;
   padding-left: 6px;
+  border-radius: 6px;
 }
 .send-btn {
   margin-left: 6px;

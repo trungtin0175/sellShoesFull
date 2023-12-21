@@ -15,6 +15,7 @@ const images = {
     banner4: require('~/assets/images/banner4.jpg'),
     Facebook_Logo: require('~/assets/images/Facebook_Logo.png'),
     Instagram_logo: require('~/assets/images/Instagram_logo.png'),
+    iconthanhcong: require('~/assets/images/iconthanhcong.png'),
     Logo_Zalo: require('~/assets/images/Logo_Zalo.png'),
     cart: require('~/assets/images/cart.jpg'),
     user: require('~/assets/images/user.jpg'),

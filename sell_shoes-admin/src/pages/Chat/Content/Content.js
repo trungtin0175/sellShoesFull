@@ -26,6 +26,15 @@ function Content({ setOnlineUser }) {
   const [sendMessage, setSendMessage] = useState(null);
   const [receivedMessage, setReceivedMessage] = useState(null);
   const socket = useRef();
+  const [expandedImage, setExpandedImage] = useState(null);
+  const handleImageClick = (imageSrc) => {
+    setExpandedImage(imageSrc);
+  };
+
+  // Thêm hàm để đóng ảnh phóng to
+  const closeExpandedImage = () => {
+    setExpandedImage(null);
+  };
 
   useEffect(() => {
     socket.current = io("http://localhost:8800");
@@ -62,6 +71,7 @@ function Content({ setOnlineUser }) {
     socket.current.on("recieve-message", (data) => {
       console.log("data1", data);
       setReceivedMessage(data);
+      setReceived(data);
     });
   }, [sendMessage, user, idRoom]);
   useEffect(() => {
@@ -89,6 +99,27 @@ function Content({ setOnlineUser }) {
         console.log(err);
       });
   }, [idRoom, dataMess, receivedMessage]);
+  const renderExpandedImage = () => {
+    if (expandedImage) {
+      return (
+        <div
+          className={cx("expanded-image-overlay")}
+          onClick={closeExpandedImage}
+        >
+          <img
+            className={cx("expanded-image")}
+            src={expandedImage}
+            alt="hinhanh"
+            onClick={(e) => {
+              e.stopPropagation();
+              setExpandedImage(null);
+            }} // Ngăn chặn sự kiện nhấp vào overlay từ lan ra
+          />
+        </div>
+      );
+    }
+    return null;
+  };
   console.log("userOnline", onlineUsers);
   return (
     <div className={cx("wrapper")}>
@@ -109,6 +140,7 @@ function Content({ setOnlineUser }) {
                 mes={mes}
                 receivedMessage={receivedMessage}
                 setSendMessage={setSendMessage}
+                handleImageClick={handleImageClick}
               />
             ))
         ) : (
@@ -123,6 +155,7 @@ function Content({ setOnlineUser }) {
           onlineUsers={onlineUsers}
         />
       </div>
+      {renderExpandedImage()}
     </div>
   );
 }

@@ -8,7 +8,7 @@ const multer = require('multer');
 const moment = require('moment');
 const cloudinary = require('cloudinary');
 const multerStorageCloundinary = require('multer-storage-cloudinary');
-
+// import dateFormat from 'dateformat';
 //const routerUser= require('./API/router/user.router')
 const siteRouter = require('./API/router/site.router');
 const userRouter = require('./API/router/user.router');
@@ -24,7 +24,7 @@ const favoriteRouter = require('./API/router/favorite.router');
 const chatRouter = require('./API/router/chat.router');
 const messageRouter = require('./API/router/message.router');
 const statisticalRouter = require('./API/router/statistical.router');
-const vnpayRouter = require('./API/router/vnp.router');
+const router = require('./API/router/vnp.router');
 
 const AccountModel = require('./models/user.model');
 const ProductModel = require('./models/product.model');
@@ -48,6 +48,7 @@ const corOption = {
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     preflightContinue: false,
     optionsSuccessStatus: 204,
+    credentials: true,
 };
 
 app.use(cors(corOption));
@@ -72,7 +73,7 @@ app.use(favoriteRouter);
 app.use(chatRouter);
 app.use(messageRouter);
 app.use(statisticalRouter);
-app.use(vnpayRouter);
+app.use(router);
 //app.use('/api/account/', AccountRouter)
 app.listen(3000, () => {
     console.log(`Server started on port`);

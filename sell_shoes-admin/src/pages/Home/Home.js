@@ -90,39 +90,17 @@ function Home() {
     <div className={cx("wrapper")}>
       <Total />
       <div className={cx("chart")}>
+        {/*  */}
         <div className={cx("mixed")}>
           <div className={cx("mixed-chart")}>
             <h4 className={cx("order-name")}>Top 10 sản phẩm bán chạy nhất</h4>
             <Chart options={options} series={series} type="bar" width="600" />
-            {/* <Chart options={options} series={series} type="bar" width="600" /> */}
           </div>
           <div className={cx("mixed-date")}>
             <h4 className={cx("mixed-name")}>
-              Số lượng người dùng đăng ký trong năm nay
-            </h4>
-            <MonthUser />
-            {/* <Space direction="vertical" size={12}>
-              <RangePicker />
-            </Space>
-            <button className={cx("filter-btn")}>Lọc</button> */}
-          </div>
-        </div>
-        <div className={cx("mixed")}>
-          <div className={cx("mixed-chart")}>
-            <h4 className={cx("order-name")}>
-              Doanh thu của từng tháng trong năm
-            </h4>
-            <MonthReveunue />
-          </div>
-          <div className={cx("mixed-date")}>
-            <h4 className={cx("mixed-name")}>
-              Số lượng người dùng đăng ký trong năm nay
+              Số lượng người dùng đăng ký, doanh thu trong năm nay
             </h4>
             <CombinedChart />
-            {/* <Space direction="vertical" size={12}>
-              <RangePicker />
-            </Space>
-            <button className={cx("filter-btn")}>Lọc</button> */}
           </div>
         </div>
       </div>

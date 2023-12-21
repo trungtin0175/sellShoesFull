@@ -14,6 +14,7 @@ import Order from '~/pages/Order';
 import OrderDetail from '~/pages/OrderDetail';
 import BuyNow from '~/pages/BuyNow';
 import Blog from '~/pages/Blog';
+import PaymentSuccess from '~/pages/PaymentSuccess';
 
 const publicRoutes = [
     { path: config.routes.home, component: Home, layout: HeaderOnly },
@@ -28,6 +29,7 @@ const publicRoutes = [
     { path: config.routes.orderDetail, component: OrderDetail, layout: HeaderOnly },
     { path: config.routes.buyNow, component: BuyNow, layout: HeaderOnly },
     { path: config.routes.blog, component: Blog, layout: HeaderOnly },
+    { path: config.routes.paymentSuccess, component: PaymentSuccess, layout: null },
 ];
 
 const privateRoutes = [];

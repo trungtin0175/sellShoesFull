@@ -174,7 +174,7 @@ function Order() {
             <div key={index} className={cx("content")}>
               <div className={cx("address")}>
                 <div className={cx("address-heading")}>
-                  <h3 className={cx("address-header")}>ĐỊA CHỈ NHẬN HÀNG</h3>
+                  <h3 className={cx("address-header")}>THÔNG TIN NHẬN HÀNG</h3>
                   <p className={cx("address-time")}>{pro.dateOrder}</p>
                 </div>
                 <div className={cx("address-content")}>
@@ -281,6 +281,9 @@ function Order() {
                 </p> */}
                 <p className={cx("content-bottom-price")}>
                   Tổng tiền: {pro.totalPrice.toLocaleString()} VNĐ
+                </p>
+                <p className={cx("content-bottom-price")}>
+                  {pro.id_payment.payName}
                 </p>
               </div>
             </div>

@@ -96,7 +96,7 @@ function Total() {
           <FontAwesomeIcon icon={faBagShopping} />
         </div>
         <div className={cx("item")}>
-          <h4 className={cx("item-name")}>Sản phẩm đã bán</h4>
+          <h4 className={cx("item-name")}>Số lượng bán</h4>
           <span className={cx("item-result")}>{productCount.data}</span>
         </div>
       </div>

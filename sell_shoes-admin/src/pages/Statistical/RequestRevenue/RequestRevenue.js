@@ -111,7 +111,7 @@ function RequestRevenue() {
         </button>
       </div>
       <div>
-        <Chart options={options} series={series} type="bar" width="1000" />
+        <Chart options={options} series={series} type="bar" width="900" />
       </div>
     </div>
   );

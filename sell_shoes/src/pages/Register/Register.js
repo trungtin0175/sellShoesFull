@@ -8,9 +8,17 @@ import { useDispatch } from 'react-redux';
 import config from '~/config/config';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useState, useEffect } from 'react';
 
 const cx = classNames.bind(styles);
 function Register() {
+    const [isRegistered, setIsRegistered] = useState(false);
+
+    useEffect(() => {
+        if (isRegistered) {
+            navigate(config.routes.login);
+        }
+    }, [isRegistered]);
     console.log(123);
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -32,11 +40,11 @@ function Register() {
         try {
             const res = await registerUser(data);
             //
+            console.log('data', data);
             toast.success('Đăng ký tài khoản thành công!', {
                 autoClose: 1000,
             });
-            setTimeout(() => navigate(config.routes.login), 2000);
-            // navigate('/login');
+            setIsRegistered(true);
         } catch (error) {
             console.log(error);
             if (error?.response?.data.message) {

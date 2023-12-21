@@ -36,7 +36,13 @@ function Blog() {
                     <img className={cx('img')} alt="hình ảnh" src={blog.image}></img>
                 </div>
                 <div className={cx('body-content')}>
-                    <p className={cx('body-content--text')}>{blog.body}</p>
+                    {/* <p className={cx('body-content--text')}>{blog.body}</p> */}
+                    {blog?.body?.split('\r\n').map((paragraph, index) => (
+                        <p className={cx('body-content--text')} key={index}>
+                            {paragraph}
+                            <br />
+                        </p>
+                    ))}
                 </div>
                 <div className={cx('container')}>
                     {Array.isArray(blog.id_product) && blog.id_product.length > 0 ? (

@@ -6,7 +6,7 @@
 .list-item {
   padding: 10px;
   &.active {
-    background-color: aqua;
+    background-color: #ebf5ff;
   }
 
   &:hover {
@@ -40,6 +40,26 @@
   background-color: #333;
 
   &.active {
-    background-color: rgb(60, 192, 12);
+    background-color: #31a24c;
+  }
+}
+.alert-number {
+  // position: absolute;
+  // top: 0;
+  // right: 85%;
+  // bottom: 100%;
+  display: flex;
+  color: var(--white);
+  border-radius: 7px;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  width: 16px;
+  height: 12px;
+  margin-left: 20px;
+
+  &.active {
+    background-color: var(--primary);
+    // display: none;
   }
 }

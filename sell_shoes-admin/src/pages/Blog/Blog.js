@@ -221,7 +221,7 @@ function Blog() {
         <img
           alt={theImageURL}
           src={theImageURL}
-          style={{ Width: "60px", height: "60px", objectFit: "contain" }}
+          style={{ maxWidth: "600px", height: "60px", objectFit: "contain" }}
         />
       ),
     },

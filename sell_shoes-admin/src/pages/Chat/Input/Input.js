@@ -149,13 +149,15 @@ function Input({ room, setSendMessage, onlineUsers }) {
     room?.messages && (
       <div className={cx("wrapper")}>
         <div className={cx("wrapper")}>
-          <input
+          <textarea
             className={cx("input")}
             name="content"
             value={data.content}
             onChange={handleChange}
             type="text"
             placeholder="Nhập nội dung"
+            rows={1} // Số hàng tối thiểu hiển thị ban đầu
+            wrap="hard"
           />
           <label htmlFor="image" className={cx("icon-with-input")}>
             <FontAwesomeIcon icon={faImage} />

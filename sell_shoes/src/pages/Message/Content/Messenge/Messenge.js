@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { format } from 'timeago.js';
 
 const cx = classNames.bind(styles);
-function Message({ mes }) {
+function Message({ mes, handleImageClick }) {
     const user = useSelector((state) => state.user);
     const formattedTime = format(new Date(mes.createdAt));
 
@@ -20,7 +20,12 @@ function Message({ mes }) {
                 </div> */}
                 <div className={cx('message-content')}>
                     {mes.image && mes?.image.length > 0 ? (
-                        <img className={cx('message-content-image')} src={mes.image} alt="hinhanh"></img>
+                        <img
+                            className={cx('message-content-image')}
+                            onClick={() => handleImageClick(mes.image)}
+                            src={mes.image}
+                            alt="hinhanh"
+                        ></img>
                     ) : (
                         <p className={cx('message-content-item')}>{mes.content}</p>
                     )}

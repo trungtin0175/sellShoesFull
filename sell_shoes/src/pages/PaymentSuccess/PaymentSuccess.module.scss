@@ -1,0 +1,27 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 80vh;
+}
+.success-img {
+    width: 250px;
+    height: auto;
+}
+.success-title {
+    margin: 20px 0 30px 0;
+    color: #31a24c;
+}
+.success-btn {
+    padding: 10px 10px;
+    border-radius: 6px;
+    background-color: var(--primary);
+    color: var(--white);
+    font-size: 2rem;
+
+    &:hover {
+        background-color: var(--primary-hover);
+        cursor: pointer;
+    }
+}

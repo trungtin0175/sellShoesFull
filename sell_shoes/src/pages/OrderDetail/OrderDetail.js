@@ -89,13 +89,14 @@ function OrderDetail() {
                     <div className={cx('information')} key={index}>
                         <div className={cx('address')}>
                             <div className={cx('address-heading')}>
-                                <h3 className={cx('address-header')}>ĐỊA CHỈ NHẬN HÀNG</h3>
+                                <h3 className={cx('address-header')}>THÔNG TIN NGƯỜI NHẬN</h3>
                                 <p className={cx('address-time')}>{pro.dateOrder}</p>
                             </div>
                             <div className={cx('address-content')}>
                                 <h3 className={cx('address-content-name')}>Tên người nhận: {pro.id_note.fullname}</h3>
                                 <p className={cx('address-content-tel')}>SĐT: {pro.id_note.phone}</p>
                                 <p className={cx('address-content-add')}>Địa chỉ: {pro.adress}</p>
+                                <p className={cx('address-content-payment')}>{pro.id_payment.payName}</p>
                             </div>
                         </div>
                         <div className={cx('order-status')}>

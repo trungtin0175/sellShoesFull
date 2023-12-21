@@ -89,13 +89,15 @@ function Input({ room, setDataInput, setSendMessage, onlineUsers, idAdmin }) {
     };
     return (
         <div className={cx('wrapper')}>
-            <input
+            <textarea
                 className={cx('input')}
                 name="content"
                 value={data.content}
                 onChange={handleChange}
                 type="text"
                 placeholder="Nhập nội dung"
+                rows={1} // Số hàng tối thiểu hiển thị ban đầu
+                wrap="hard"
             />
             {/* <div className={cx('icon-with-input')}> */}
             <label htmlFor="image" className={cx('icon-with-input')}>

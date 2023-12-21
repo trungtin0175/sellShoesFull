@@ -64,10 +64,39 @@
   align-items: center;
   justify-content: center;
   max-height: 600px;
+  // min-height: 100px;
   max-width: 100%;
+  // width: auto;
   border-radius: 10px;
 }
 .message-content-time {
   font-size: 1.2rem;
   color: #bbb;
+}
+.expanded-image-overlay {
+  z-index: 10;
+  position: absolute;
+}
+.expanded-image {
+  z-index: 10;
+}
+.alert-number {
+  // position: absolute;
+  // top: 0;
+  // right: 85%;
+  // bottom: 100%;
+  background-color: var(--primary);
+  color: var(--white);
+  border-radius: 7px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  width: 16px;
+  height: 12px;
+  margin-left: 20px;
+
+  &.active {
+    display: none;
+  }
 }

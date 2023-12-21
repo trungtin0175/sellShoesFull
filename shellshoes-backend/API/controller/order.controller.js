@@ -540,6 +540,9 @@ const OrderController = {
                 .populate({
                     path: 'id_note',
                 })
+                .populate({
+                    path: 'id_payment',
+                })
                 .sort({ dateOrder: -1 });
             const formattedAllOrder = allOrder.map((order) => {
                 return {

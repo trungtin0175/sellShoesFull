@@ -12,18 +12,23 @@ function ListChat({ onlineUser }) {
   const user = useSelector((state) => state.user);
   const { setIdRoom } = useContext(IdRoomContext);
   const { idRoom } = useContext(IdRoomContext);
-
   const { setNameRoom } = useContext(NameRoomContext);
   const { nameRoom } = useContext(NameRoomContext);
 
   const { received } = useContext(ReceivedContext);
   const [dataList, setDataList] = useState([]);
   const [resetList, setResetList] = useState(false);
+  const [active, setActive] = useState(true);
+  const [receivedMessage, setReceivedMessage] = useState(received);
+  // received !== null && received.roomId === data.roomId
+  // true
   const [data, setData] = useState({
     firstId: user._id,
     secondId: "",
   });
-
+  // useEffect(()=>{
+  //   setActive()
+  // },[received])
   const handleCreate = async (id) => {
     // e.preventDefault();
     try {
@@ -46,6 +51,7 @@ function ListChat({ onlineUser }) {
       // console.log("respone", response);
       setIdRoom(response.data._id);
       setResetList(!resetList);
+      setActive(false);
     } catch (error) {
       console.error(error);
     }
@@ -55,18 +61,21 @@ function ListChat({ onlineUser }) {
       .get("http://localhost:3000/api/all/chat")
       .then((res) => {
         setDataList(res.data);
+        setActive(!active);
         console.log("resList", res.data);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, [resetList, idRoom]);
+  }, [resetList, idRoom, received]);
   const handleSelectResult = (resultId) => {
     setNameRoom(resultId);
   };
-  console.log("datalist", data);
+  console.log("datalist", dataList);
   console.log("nameroom", nameRoom);
   console.log("onlineUser1234", onlineUser);
+  console.log("idnamerom", idRoom);
+  console.log("rêce", receivedMessage);
   return (
     <div className={cx("wrapper")}>
       <ul className={cx("list")}>
@@ -83,12 +92,14 @@ function ListChat({ onlineUser }) {
                   .filter((a) => a.isAdmin === false)
                   .map((filteredMember) => filteredMember._id)
               );
+              setReceivedMessage();
             }}
             key={index}
             className={cx("list-item", {
-              active: item.members
-                .filter((a) => a.isAdmin === false)
-                .some((member) => member.fullname === nameRoom[0]),
+              // active: item.members
+              //   .filter((a) => a.isAdmin === false)
+              //   .some((member) => member.fullname === nameRoom[0]),
+              active: item._id === idRoom,
             })}
           >
             <h4 className={cx("list-item-name")}>
@@ -120,6 +131,15 @@ function ListChat({ onlineUser }) {
                     ),
                 })}
               ></div>
+              <div
+                className={cx("alert-number", {
+                  active:
+                    receivedMessage !== null &&
+                    receivedMessage?.roomId === item._id &&
+                    item._id !== idRoom &&
+                    active,
+                })}
+              ></div>
             </div>
             {console.log("item.members", item.members)}
             {console.log(
@@ -133,6 +153,11 @@ function ListChat({ onlineUser }) {
               item.members
                 .filter((a) => a.isAdmin === false)
                 .map((member) => member.fullname === nameRoom[0])
+            )}
+            {console.log(
+              `idrom${index}`,
+              item._id === idRoom
+              // .map((member) => member.fullname === nameRoom[0])
             )}
           </li>
         ))}

@@ -5,6 +5,7 @@ import DefaultLayout from '~/layouts';
 import './index.css';
 import { useState, createContext } from 'react';
 export const LengthContext = createContext();
+export const DataPayment = createContext();
 
 function App() {
     const [lengthCart, setLengthCart] = useState(0);

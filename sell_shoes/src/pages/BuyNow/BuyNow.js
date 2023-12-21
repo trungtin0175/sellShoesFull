@@ -2,6 +2,8 @@ import styles from './BuyNow.module.scss';
 import classNames from 'classnames/bind';
 import { useState, useEffect, useContext } from 'react';
 import ActionBuy from '../Product/ActionBuy/ActionBuy';
+import { useDispatch } from 'react-redux';
+import { setCredentials } from '../../redux/orderPaymentSlice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import images from '~/assets/images';
@@ -17,13 +19,18 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const cx = classNames.bind(styles);
 
-function Cart() {
+function BuyNow() {
     const token = useSelector((state) => state.user.accessToken);
     const navigate = useNavigate();
     const { productCart } = useContext(ProductContext);
     const [allPrice, setAllPrice] = useState(0);
     const [allQuantity, setAllQuantity] = useState(0);
     const [active, setActive] = useState(false);
+    const [isPaymentOnDeliveryActive, setIsPaymentOnDeliveryActive] = useState(false);
+    const [isVnpayActive, setIsVnpayActive] = useState(false);
+    const [isPaymentOnDelivery, setIsPaymentOnDelivery] = useState(false);
+    const dispatch = useDispatch();
+
     const [formData, setFormData] = useState({
         fullname: '',
         phone: '',
@@ -35,7 +42,19 @@ function Cart() {
             ...order,
             payName: 'Thanh toán khi nhận hàng',
         }));
-        setActive(!active);
+        setIsPaymentOnDelivery(true);
+        // setActive(!active);
+        setIsPaymentOnDeliveryActive(true);
+        setIsVnpayActive(false);
+    };
+    const handleVnpay = () => {
+        setFormData((order) => ({
+            ...order,
+            payName: 'Đã thanh toán bằng vnpay',
+        }));
+        setIsPaymentOnDelivery(false);
+        setIsPaymentOnDeliveryActive(false);
+        setIsVnpayActive(true);
     };
     console.log('productCart', productCart);
     // const productCart = Array.isArray(productCart) ? productCart : [productCart];
@@ -44,8 +63,55 @@ function Cart() {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    const handlePayment = async () => {
+        const form = new FormData();
+        form.append('fullname', formData.fullname);
+        form.append('numberpone', formData.numberpone);
+        form.append('address', formData.address);
+        const orderProducts = productCart.map((product) => ({
+            id_product: product.id_product,
+            quantity: product.quantity,
+            size: product.size,
+            unit_price: product.unitPrice,
+            price: product.price,
+        }));
+
+        const orderData = {
+            fullname: formData.fullname,
+            phone: formData.phone,
+            address: formData.address,
+            payName: formData.payName,
+            orderProducts,
+        };
+        console.log('false nè', formData.payName);
+
+        try {
+            dispatch(setCredentials(orderData));
+            const response = await axios.post(
+                'http://localhost:3000/create_payment_url',
+                {
+                    amount: allPrice, // Số tiền thanh toán
+                    orderInfo: 'Thanh toán cho đơn hàng ABC', // Thông tin đơn hàng
+                    // Thêm các thông tin khác cần thiết
+                    bankCode: 'NCB',
+                    language: 'vn',
+                },
+                {
+                    headers: {
+                        token: `Bearer ${token}`,
+                    },
+                },
+            );
+            console.log('res123', response.data.url);
+            // Chuyển hướng người dùng đến cổng thanh toán VNPay
+            window.location.href = response.data.url;
+        } catch (error) {
+            console.error('Lỗi khi tạo thanh toán:', error);
+            // Xử lý lỗi
+        }
+    };
+    const handleSubmit = async () => {
+        // e.preventDefault();
         console.log('formdata', formData);
         if (formData.fullname === '' || formData.phone === '' || formData.address === '' || productCart.length === 0) {
             toast.error('Vui lòng điền đầy đủ thông tin theo yêu cầu và chọn sản phẩm trước khi mua.');
@@ -70,6 +136,7 @@ function Cart() {
             payName: formData.payName,
             orderProducts,
         };
+        console.log('true nè', orderData.payName);
         try {
             console.log('orrderData', orderData);
             const response = await axios.post('http://localhost:3000/api/order/create', orderData, {
@@ -217,10 +284,13 @@ function Cart() {
                 <h3 className={cx('pay-name')}>Chọn phương thức thanh toán: </h3>
                 <div className={cx('button-pay')}>
                     {/* {payArr.map((pay, index) => ( */}
-                    <div onClick={() => handlePay()} className={cx('button-submit', { active: active })}>
+                    <div
+                        onClick={() => handlePay()}
+                        className={cx('button-submit', { active: isPaymentOnDeliveryActive })}
+                    >
                         Thanh toán khi nhận hàng
                     </div>
-                    <div onClick={() => handlePay()} className={cx('button-submit')}>
+                    <div onClick={() => handleVnpay()} className={cx('button-submit', { active: isVnpayActive })}>
                         Thanh toán bằng vnpay
                     </div>
                     {/* ))} */}
@@ -231,7 +301,12 @@ function Cart() {
                 <h4 className={cx('footer-all')}>Tổng thanh toán {allQuantity} sản phẩm:</h4>
                 <div className={cx('footer-price')}>{allPrice.toLocaleString()} VNĐ</div>
                 {/* <ActionBuy /> */}
-                <div onClick={handleSubmit} className={cx('buy-btn')}>
+                <div
+                    onClick={() => {
+                        isPaymentOnDelivery ? handleSubmit() : handlePayment();
+                    }}
+                    className={cx('buy-btn')}
+                >
                     Mua ngay
                 </div>
             </div>
@@ -240,4 +315,4 @@ function Cart() {
     );
 }
 
-export default Cart;
+export default BuyNow;

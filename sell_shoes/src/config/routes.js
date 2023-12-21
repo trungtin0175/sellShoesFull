@@ -11,5 +11,6 @@ const routes = {
     orderDetail: '/api/order/detail/:_id',
     buyNow: '/api/buyNow',
     blog: '/api/blog/detail/:_id',
+    paymentSuccess: '/api/payment/success',
 };
 export default routes;
