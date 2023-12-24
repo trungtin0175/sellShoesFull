@@ -1,12 +1,14 @@
 .wrapper {
   margin-left: 50px;
 }
-.time {
+.form-group {
+  display: flex;
+  //   flex-direction: column;
 }
 .form-submit--category {
-  padding: 10px 16px;
+  padding: 10px 20px;
   background-color: var(--primary);
-  color: var(--white);
   border-radius: 6px;
+  color: var(--white);
   margin-left: 10px;
 }

@@ -97,8 +97,9 @@ function Home() {
         console.log('favoIds', favoriteIds);
         console.log('productfavoIds', productCountFavo);
         console.log('sortedproductfavoIds', sortedProductCountFavo);
+        const slicedProductFavorite = sortedProductCountFavo.slice(0, 5);
         // setProductFavorite(productCountFavo);
-        setProductFavorite(sortedProductCountFavo);
+        setProductFavorite(slicedProductFavorite);
     }, [products]);
     useEffect(() => {
         const saleProduct = products.filter((pro) => pro.salePrice !== null);

@@ -1,6 +1,9 @@
 const moment = require('moment');
+const momentTimeZone = require('moment-timezone');
 const OrderModel = require('../../models/order.model');
 const UserModel = require('../../models/user.model');
+const ProductModel = require('../../models/product.model');
+const SaleModel = require('../../models/sale.model');
 const DetailOrder = require('../../models/detail-order.model');
 const statisticalController = {
     monthlyRevenue: async (req, res, next) => {
@@ -182,6 +185,51 @@ const statisticalController = {
             return res.status(200).json({
                 sucess: true,
                 data: sumPricePorduct,
+            });
+        } catch (error) {
+            return res.status(500).json({
+                sucess: false,
+                message: error.message,
+            });
+        }
+    },
+    inventory: async (req, res, next) => {
+        try {
+            const findInventory = await ProductModel.find();
+            return res.status(200).json({
+                sucess: true,
+                data: findInventory,
+            });
+        } catch (error) {
+            return res.status(500).json({
+                sucess: false,
+                message: error.message,
+            });
+        }
+    },
+    productSale: async (req, res, next) => {
+        try {
+            const productSale = await SaleModel.find().populate({
+                path: 'saleProducts.id_product',
+            });
+
+            const exchange = productSale.map((product) => {
+                const startSale = moment(product.startSale)
+                    .tz('Asia/Bangkok')
+                    .format('DD-MM-YYYY HH:mm');
+                //console.log('startSale', startSale);
+                const endSale = moment(product.endSale)
+                    .tz('Asia/Bangkok')
+                    .format('DD-MM-YYYY HH:mm');
+                return {
+                    ...product._doc,
+                    startSale: startSale,
+                    endSale: endSale,
+                };
+            });
+            return res.status(200).json({
+                sucess: true,
+                data: exchange,
             });
         } catch (error) {
             return res.status(500).json({
